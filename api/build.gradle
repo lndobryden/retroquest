@@ -85,6 +85,6 @@ dockerCompose {
     waitForTcpPorts = true
 }
 
-task buildPackage(type: GradleBuild, dependsOn: ':ui:npm_run_build-prod') {
-
-}
+task buildPackage(){}
+buildPackage.dependsOn ':ui:npm_run_build-prod'
+buildPackage.finalizedBy 'build'
