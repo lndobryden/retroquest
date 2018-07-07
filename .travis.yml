@@ -5,10 +5,14 @@ jdk:
 services:
   - mysql
 
+addons:
+  chrome: stable
+
 cache:
   directories:
     - ./ui/node_modules
     - $HOME/.m2
-
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
 script:
   - ./prepare.sh
