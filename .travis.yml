@@ -14,11 +14,18 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 
-install: true
-
-script:
-  - ./prepare.sh
+env:
+  - SPRING_PROFILES_ACTIVE=docker
 
 before_install:
   - sudo service mysql stop
+
+install:
+  - cd ./ui && npm install && cd ..
+  - ./gradlew assemble
+
+script:
+  - cd ./ui && npm run lint && npm run sass-lint && npm run unit
+  - ./gradlew check dockerApiTest
+
 

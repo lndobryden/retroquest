@@ -22,18 +22,8 @@ fi
 set -x
 pushd ui
   npm install
-  npm run lint-fix
-  npm run sass-lint-fix
-
-  set +x
-  if [[ $(git diff .) ]]
-  then
-    git add -A
-    git commit --amend --no-edit
-    echo "Amended lint fixes to last commit"
-    
-  fi
-  set -x
+  npm run lint
+  npm run sass-lint
 
   npm run build
 
