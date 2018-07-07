@@ -3,7 +3,6 @@ language: java
 sudo: required
 
 services:
-  - docker
   - mysql
 
 addons:
@@ -23,9 +22,6 @@ before_install:
   - cd ../api
   - ./gradlew assemble
   - cd ..
-
-before_script:
-  - sudo /etc/init.d/mysql stop
 
 script:
   - ./prepare.sh
