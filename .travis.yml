@@ -39,8 +39,7 @@ script:
     fi
   - |
     if [ "${TEST_SUITE}" == "api" ]; then
-      export SPRING_PROFILES_ACTIVE=docker
-      ./gradlew check dockerApiTest
+      SPRING_PROFILES_ACTIVE=docker ./gradlew check dockerApiTest
     fi
 
 
