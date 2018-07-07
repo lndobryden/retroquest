@@ -14,7 +14,8 @@ addons:
 
 cache:
   directories:
-    - node_modules
+    - ./ui/node_modules
+    - $HOME/.m2
 
 before_install:
   - cd ./ui
