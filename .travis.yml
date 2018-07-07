@@ -1,27 +1,14 @@
 language: java
-
-sudo: required
+jdk:
+  - oraclejdk8
 
 services:
   - mysql
-
-addons:
-  chrome: stable
-  apt:
-    packages:
-      - oracle-java8-installer
 
 cache:
   directories:
     - ./ui/node_modules
     - $HOME/.m2
-
-before_install:
-  - cd ./ui
-  - npm install
-  - cd ../api
-  - ./gradlew assemble
-  - cd ..
 
 script:
   - ./prepare.sh
