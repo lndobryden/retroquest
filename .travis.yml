@@ -24,21 +24,21 @@ before_install:
 
 install:
   - |
-    if ["${TEST_SUITE}" == "ui"]; then
+    if [ "${TEST_SUITE}" == "ui" ]; then
       cd ./ui && npm install && cd ..
     fi
   - |
-    if ["${TEST_SUITE}" == "api"]; then
+    if [ "${TEST_SUITE}" == "api" ]; then
       ./gradlew assemble
     fi
 
 script:
   - |
-    if ["${TEST_SUITE}" == "ui"]; then
+    if [ "${TEST_SUITE}" == "ui" ]; then
       cd ./ui && npm run lint && npm run sass-lint && npm run unit && cd ..
     fi
   - |
-    if ["${TEST_SUITE}" == "api"]; then
+    if [ "${TEST_SUITE}" == "api" ]; then
       export SPRING_PROFILES_ACTIVE=docker
       ./gradlew check dockerApiTest
     fi
