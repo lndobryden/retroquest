@@ -5,7 +5,7 @@ jdk:
 sudo: required
 
 services:
-  - mysql
+  - docker
 
 addons:
   chrome: stable

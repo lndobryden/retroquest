@@ -72,3 +72,12 @@ jar {
     archiveName = "${archivesBaseName}-${version}.jar"
 }
 
+dockerCompose {
+
+    apiTests {
+        useComposeFiles = ['docker-compose.yml']
+        isRequiredBy(project.tasks.dockerApiTest)
+    }
+
+    waitForTcpPorts = true
+}
