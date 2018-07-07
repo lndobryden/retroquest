@@ -10,6 +10,7 @@ services:
 cache:
   directories:
     - ./ui/node_modules
+    - $HOME/.npm
     - $HOME/.m2
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
