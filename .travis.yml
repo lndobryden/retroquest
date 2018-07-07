@@ -16,7 +16,6 @@ cache:
     - $HOME/.gradle/wrapper/
 
 env:
-  - SPRING_PROFILES_ACTIVE=docker
   - TEST_SUITE=ui
   - TEST_SUITE=api
 
@@ -36,6 +35,7 @@ script:
       cd ./ui && npm run lint && npm run sass-lint && npm run unit && cd ..
     fi
   - if ["$TEST_SUITE" == "api"]; then
+      export SPRING_PROFILES_ACTIVE=docker
       ./gradlew check dockerApiTest
     fi
 
