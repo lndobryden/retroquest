@@ -17,16 +17,26 @@ cache:
 
 env:
   - SPRING_PROFILES_ACTIVE=docker
+  - TEST_SUITE=ui
+  - TEST_SUITE=api
 
 before_install:
   - sudo service mysql stop
 
 install:
-  - cd ./ui && npm install && cd ..
-  - ./gradlew assemble
+  - if ["$TEST_SUITE" == "ui"]; then
+      cd ./ui && npm install && cd ..
+    fi
+  - if ["$TEST_SUITE" == "api"]; then
+      ./gradlew assemble
+    fi
 
 script:
-  - cd ./ui && npm run lint && npm run sass-lint && npm run unit && cd ..
-  - ./gradlew check dockerApiTest
+  - if ["$TEST_SUITE" == "ui"]; then
+      cd ./ui && npm run lint && npm run sass-lint && npm run unit && cd ..
+    fi
+  - if ["$TEST_SUITE" == "api"]; then
+      ./gradlew check dockerApiTest
+    fi
 
 
