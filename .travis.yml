@@ -7,9 +7,6 @@ sudo: required
 services:
   - docker
 
-addons:
-  chrome: stable
-
 cache:
   directories:
     - ./ui/node_modules
